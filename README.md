@@ -1,4 +1,4 @@
-# FS-SSA-GPT — causal spiking self-attention on tiny Shakespeare
+# FS-SSA-GPT — Causal Spiking self-attention on tiny Shakespeare
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
