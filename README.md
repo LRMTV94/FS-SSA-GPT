@@ -138,7 +138,7 @@ T_mean  [0.798, 0.401]      per-channel spread  [0.102, 0.050]
 
 The mean has risen about 6% and, more interestingly, a per-channel spread of roughly 13% has developed where the initialisation had none. This is consistent with `L` being the only variant that helps anything here: it recovers −0.019 nats [−0.034, −0.004] on top of the signed neuron. It does not recover enough to beat the plain neuron, which remains the best spiking configuration.
 
-![Loss curves and energy frontier](fsssa_gpt_curves.png)
+![Loss curves and energy frontier](figures/fsssa_gpt_curves.png)
 
 
 ### The learnable ladders did move here
