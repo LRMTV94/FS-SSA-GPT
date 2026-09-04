@@ -232,8 +232,7 @@ The full set, one per configuration and seed, is in `fsssa_gpt_samples.txt`.
 
 ## Usage
 
-One script, no packages, no subdirectories. Both run as they are on Colab with
-a GPU.
+One script, no packages, no subdirectories. Both run as they are on Colab with a GPU (T4 or A100).
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
@@ -242,12 +241,7 @@ pip install torch matplotlib numpy
 python fsssa_gpt_shakespeare.py     # trains, writes fsssa_gpt_state.json
 ```
 
-The training script downloads tiny Shakespeare on first run, prints the derived threshold scales and a set of sanity checks — that the learnable neuron reproduces the fixed one exactly at initialisation, that the readout scale leaves the spike pattern untouched, that `signed` reaches the attention, and that the causal mask leaks nothing — and then writes its state after **every configuration**. If the session drops, re-running resumes where it stopped.
-
-The report script is separate on purpose: the training is long enough that a disconnection would otherwise cost the figures too. It does not import torch, runs on a partial sweep, and says so when configurations have unequal numbers of seeds.
-
-To repeat the run at a longer budget, change `MAX_ITERS`; the cosine schedule
-adapts to it.
+To repeat the run at a longer budget, change `MAX_ITERS`; the cosine schedule adapts to it.
 
 ---
 
@@ -281,7 +275,7 @@ Given that the architecture demonstrated solid numerical stability across seeds 
    Transitioning from character-level encoding to subword tokenisation (e.g., `tiktoken` / BPE), allowing the model capacity to focus on high-level semantics and grammar rather than character spelling.
 
 4. **Causal memory decay ($\gamma$):**
-   Incorporating a learnable or fixed decay factor ($\gamma \approx 0.95–0.98$) into the causal state accumulation ($S_t = \gamma S_{t-1} + K_t^T V_t$) to introduce recency bias and prevent state saturation over very long sequence contexts ($T \ge 4096$).
+   Incorporating a learnable or fixed decay factor ($\gamma $) into the causal state accumulation ($S_t = \gamma S_{t-1} + K_t^T V_t$) to introduce recency bias and prevent state saturation over very long sequence contexts ($T \ge 4096$).
 
 ---
 
