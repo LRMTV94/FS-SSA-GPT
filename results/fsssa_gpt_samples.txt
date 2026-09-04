@@ -1,0 +1,309 @@
+======================================================================
+softmax + gelu | seed 0 | best val 1.4474 (ppl 4.25) @ iter 9000
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+Could see the boar me speak and said 'My cheeks?'
+And come thou slipp thus to my soul of women?
+
+Shepherd:
+Good denure too.
+
+Provost:
+Why, very well. What's the matter?
+
+DUKE VINCENTIO:
+Now, good denures?
+
+LUCIO:
+Good sir. What's there?  for the duke?
+
+DUKE VINCENTIO:
+Of the duke's woman?
+
+LUCIO:
+So shall not be gone, not on his lord.
+
+DUKE VINCENTIO:
+O that is not here.
+
+Provost:
+A woman of since he comes, him he had done:
+But as the duke's a silking of breast one shadows:
+Let him on him like t
+
+======================================================================
+softmax + gelu | seed 1 | best val 1.4516 (ppl 4.27) @ iter 8250
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+Did it hope he deny the Lord Hastings of Lancaster?
+
+QUEEN ELIZABETH:
+Your hands and but what lies you in this world.
+
+KING RICHARD III:
+My lord, you are not hated much before:
+By heaven, I'll be softly be no more;
+Stay not by the mercy ground in my love,
+Then play the last I am lost my tale,
+Desire on the head of the side of the war
+And little that my pain of the field,
+That I must be remember'd it for my hands,
+To be my brother loss, and his offence
+Not than my succession shall kill a part;
+An
+
+======================================================================
+softmax + gelu | seed 2 | best val 1.4416 (ppl 4.23) @ iter 9500
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+But touch the field of the vows of the book,
+Which then yet about-shining words can never
+Be a place would do the lid that die of her bodies
+And so protect in the public of subjects.
+To do the truth, and be so?
+Go we to this soul's faults? For thine own side,
+Of the court-lady stocks, being a straight of good
+To keep our courties that would they be oath.
+
+ROMEO:
+I have the world, have loved thee them from the brother,
+And these thy state all my purpose.
+
+MERCUTIO:
+Sirrah, sir, come.
+
+MERCUTIO:
+I
+
+======================================================================
+ssa K=2 | seed 0 | best val 1.5606 (ppl 4.76) @ iter 9000
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+With her back at sain possess through shall
+And thee make more to to fly earse perform.
+If shall the Tybalt will you grace us need:
+Because the love of my husband sword of our daughter,
+And the maids the like gods enemies.
+To sully boldly lay not the girecte night
+And herself are shall be an our creciess;
+To like good a brother tidement to him.
+
+QUEEN ELIZABETH:
+What is the more, to think you have his should
+Art a husband is but roallad.
+
+KING RICHARD III:
+What is the prince of thou of the littl
+
+======================================================================
+ssa K=2 | seed 1 | best val 1.5574 (ppl 4.75) @ iter 8250
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+The conscience of my deful love of the field
+And horse and for such a dediesty.
+
+SLY:
+I will hear me all strange: so where they should show
+More entertain her child to speak.
+
+Nurse:
+I pray thee but her contradion in his country
+hands scarced him.
+
+POLIXENES:
+Ay, imar, my lord;
+There it my denire be than him the in little; the
+return that the is precees.
+
+First Gentleman:
+Why, the noble the king? I am to repercting
+of his wife, and the words, and I never after whereof.
+
+Provost:
+'Take he the lad
+
+======================================================================
+ssa K=2 | seed 2 | best val 1.5505 (ppl 4.71) @ iter 9500
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+I cannot be no saint that you have broke you not?
+
+STANLEY:
+Why, then? What made you to hear you?
+
+POMPEY:
+Why, my lord.
+
+POMPEY:
+Good sir, and much you have well not be as those
+father, you shall be so well and for ever syou.
+
+POMPEY:
+What's a gone?
+
+LUCIO:
+A know she name of her may but you will so out bencer.
+
+BOPET:
+Here, mean, what now have a marriage?
+Never much know I attend strenes of joy?
+
+ELBOW:
+And beseech your in your equen, most heads, vine one
+rot reason.
+
+POLIXENES:
+And my lord, w
+
+======================================================================
+ssa K=2 +/- | seed 0 | best val 1.6012 (ppl 4.96) @ iter 9000
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+Will your grats by this you.
+
+LEONTES:
+I that were you not.
+
+CAMILLO:
+I tell you were thanks
+Give your grace; and stands me upon the news.
+
+DUKE VINCENTIO:
+Lords, nor your own you do your blood
+Friends pardon your furthean as your evil live.
+
+Provost:
+Your shall of more thence of your brother.
+Honow the lives your warm I retell it my coulds,
+Though you are by his safet brom men this new:
+Though my had not do our a deadly gise,
+So things hath prink and dangerous learnt
+With my holy kife is deedin
+
+======================================================================
+ssa K=2 +/- | seed 1 | best val 1.6146 (ppl 5.03) @ iter 8250
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+Prove the rest of my breath day of the fearful
+That my son favour day to thee reder.
+
+KING RICHARD II:
+As I would so the good will be one
+To take one the bosom with the world:
+No I'll not but I great thee that I shall it.
+
+CLIFFORD:
+The dried I am marriedd to of the prince:
+We Rome thy son oldong both and this.
+
+GLOUCESTER:
+Why, do here then found thee as tread of of drave?
+
+LUCENCE:
+Annot be three to yof desert, and anger!
+Thou may bed, a I cannot not dear by where.
+
+GLOUCESTER:
+A what made lea
+
+======================================================================
+ssa K=2 +/- | seed 2 | best val 1.5967 (ppl 4.94) @ iter 9500
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+I will show now a butt they are of the world:
+Which farewell, for thyself, sot thou lovest,
+When thy comfort the safer capt of all thee.
+
+KING EDWARD IV:
+Why, strange brother of the deceiver than vex?
+
+KING LEWIS XI:
+Why love plain thee state and for they suspect,
+Their way pails that subject Bushand outher:
+And therefore their strength to England's power;
+And there they of daterned these words,
+So liengess slee the murder away toucht,
+For the windivence thereof with arm'd for hind.
+Now there he
+
+======================================================================
+ssa K=2 +/- L | seed 0 | best val 1.5807 (ppl 4.86) @ iter 9000
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+With her brother sain post a there.
+The will not humble hence; but once tell you
+As pity against the Tybalt were as privane,
+The story sweet to bloody now the deeds;
+Let him dreams of the cause of love.
+
+FRIAR LAURENCE:
+Wherefore Clifford, Somereo show prove noble
+Whose then harm at the fairest in bloods
+The proper crows for twiting. Why crown once to fear,
+He hath gent strong artt them here that in the king
+Are the sway ad her of hinatation
+Of the a punite of pleasul pluck'd his child.
+
+GREEN:
+
+
+======================================================================
+ssa K=2 +/- L | seed 1 | best val 1.5905 (ppl 4.91) @ iter 8250
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+
+PAULINA:
+Be signimes, for they seen shall feel show
+And not to shall be rest my friend approach:
+I would my sconten the gate, being I should were
+Leve the shall sweet a for their afflicion.
+
+ISABELLA:
+O, they hast their too scrip it is dead;
+To and she vile. I were preming well.
+
+ANGELO:
+If no Go; be ange, let it it me, think
+The who can straisfing.
+
+ANNGELO:
+Why came a corn'd, to be the certain boad do reason
+One
+That beir counted: be'en I cannot neving it,
+I have cold not guives the not many 
+
+======================================================================
+ssa K=2 +/- L | seed 2 | best val 1.5842 (ppl 4.88) @ iter 9500
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+
+I have should be and the favour'd mind her father.
+
+KING EDWARD IV:
+Now, bring the man, heart my soul love worls,
+Where I have any the shame fairs thy word.
+
+DUKE OF AUMERLE:
+And for thy dispirate vass my blood.
+
+KING EDWARD IV:
+By I warrant thou from thy Edward's death,
+My bright mayor arms and thy book being thee;
+And should make was thy England's place three,
+Art thou of thee and these blood mvirting and steel.
+
+KING RICHARD II:
+Why, my lord? Warwick with fobished's barks.
+Hence, they will ha
+
