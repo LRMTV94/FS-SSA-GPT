@@ -5,7 +5,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22048497.svg)](https://doi.org/10.5281/zenodo.22048497)
 
 
-This is a first attempt at making the attention of an **autoregressive** transformer spiking. Query, key and value are quantised into at most K binary spikes by a few-spikes (FS) neuron, the softmax is removed entirely, and the result is measured against a matched full-precision control on character-level tiny Shakespeare.
+This repository presents an **autoregressive** Transformer powered by **Softmax-Free Spiking Self-Attention** (FS-SSA). Query, key and value are quantised into at most K binary spikes by a few-spikes (FS) neuron, the softmax is removed entirely, and the result is measured against a matched full-precision control on character-level tiny Shakespeare.
 
 The model is small on **purpose**: ~2.7M parameters, 6 layers, 256 characters of context. The question is not whether this competes with a real language model (it does not, and neither does the control) but whether removing the softmax from a *causal* attention costs anything measurable at the same size.
 
