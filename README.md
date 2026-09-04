@@ -17,7 +17,7 @@ Prior work in this line: [FS-SSA](https://github.com/LRMTV94/FS_Softmax_Free_Att
 
 2) At the 10k-iteration budget, the FS-model is clearly behind on validation loss. But the two arms are not in the same state at that point : the control has converged and started overfitting, istead, the spiking one is still improving, so the size of that gap is not its final value.
 
-This is a first attempt, published as it stands. In the future, attempts will follow.
+This is a first attempt, published as it stands. In the future, other attempts will follow.
 
 ---
 
@@ -232,7 +232,7 @@ The full set, one per configuration and seed, is in `fsssa_gpt_samples.txt`.
 
 ## Usage
 
-One script, no packages, no subdirectories. Both run as they are on Colab with a GPU (T4 or A100).
+One script, no packages, no subdirectories. Both run on Colab with a GPU (T4 or A100).
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
