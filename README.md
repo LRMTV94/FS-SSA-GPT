@@ -293,5 +293,22 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 
 - Vaswani et al., *Attention Is All You Need*, NeurIPS 2017.
 
+## Citation and Acknowledgements
+
+If you use this codebase or the FS-SSA architecture in your research, please cite:
+
+```bibtex
+@software{FS_Softmax_Free_Attention_2026,
+  author    = {Lo Russo Matteo Vito},
+  title     = {Few-Spikes Transformer with Spiking Self-Attention},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22048497},
+  url       = {https://doi.org/10.5281/zenodo.22048497}
+}
+```
+
+Thanks for your.... Attention! 😄
+
 ---
 
