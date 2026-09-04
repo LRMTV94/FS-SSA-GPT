@@ -224,7 +224,7 @@ Crucially, a distinct qualitative trade-off emerges between the spiking variants
   
 - **FS-SSA K=2 ± L** (signed + learnable thresholds), despite a slightly higher loss (+0.03 nats over plain K=2), exhibits **the highest structural and dramatic fidelity**. It consistently generates complex, multi-speaker scenes featuring major historical and play-specific characters (`KING EDWARD IV:`, `DUKE OF AUMERLE:`, `FRIAR LAURENCE:`, `PAULINA:`).
 
-While all spiking samples contain somewhat more invented words (`bencer`, `mvirting`, `syou`) and drift out of syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget), the combination of signed suppression and channel-level threshold adaptation in `FS-SSA K=2 ± L` preserves high-level character roles and dialogue hierarchy with remarkable fidelity, while **loweing attention spiking activity by 20%**.
+While all spiking samples contain somewhat more invented words (`bencer`, `mvirting`, `syou`) and drift out of syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget), the combination of signed suppression and channel-level threshold adaptation in `FS-SSA K=2 ± L` preserves high-level character roles and dialogue hierarchy with remarkable fidelity, while **lowering attention spiking activity by 20%**.
 
 The full set, one per configuration and seed, is in `fsssa_gpt_samples.txt`.
 
