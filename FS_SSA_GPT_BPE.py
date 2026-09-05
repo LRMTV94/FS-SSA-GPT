@@ -475,8 +475,7 @@ class Block(nn.Module):
 
         self.mlp = nn.Sequential(
             nn.Linear(d_model, hidden),
-            make_activation(activation, K, width, mlp_scale, readout_scale,
-                            learnable, True, hidden),
+            make_activation(activation, K, width, mlp_scale, readout_scale, learnable, True, hidden),
             nn.Linear(hidden, d_model),
             nn.Dropout(dropout),
         )
