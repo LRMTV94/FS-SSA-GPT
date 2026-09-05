@@ -1,4 +1,4 @@
-# FS-SSA-GPT — Causal Spiking Self-Attention on Tiny Shakespeare and TinyStories
+# FS-SSA-GPT — Causal Spiking Self-Attention on TinyShakespeare and TinyStories
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
@@ -18,7 +18,7 @@ Prior work in this line: [FS-SSA](https://github.com/LRMTV94/FS_Softmax_Free_Att
 
 2. **Convergence:** At 10k steps on TinyShakespeare, the FP32 control overfits while the spiking variants remain on a steady downward slope.
 
-3. **Scalability:** At 25.1M parameters on TinyStories BPE, the Softmax-free `FS-SSA K=2 ± L` model achieves a validation loss of **$1.8238 \pm 0.0074$** (Perplexity **6.20**), operating directly in the same loss regime as dense FP32 transformers ($\sim 1.70 - 1.90$) reported in the literature.
+3. **Scalability:** At 25.1M parameters on TinyStories BPE, the Softmax-free `FS-SSA K=2 ± L` model achieves a validation loss of **1.8163 ± 0.0139** (Perplexity **6.16**), operating directly in the same loss regime as dense FP32 transformers ($\sim 1.70 - 1.90$) reported in the literature.
 
 ---
 
@@ -280,15 +280,11 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 
 ## References
 
-- Stöckl & Maass, *Optimized spiking neurons can classify images with high
-  accuracy through temporal coding with two spikes*, Nature Machine Intelligence
-  3, 230–238 (2021).
+- Stöckl & Maass, *Optimized spiking neurons can classify images with high accuracy through temporal coding with two spikes*, Nature Machine Intelligence 3, 230–238 (2021).
 
-- Zhou et al., *Spikformer: When Spiking Neural Network Meets Transformer*,
-  ICLR 2023.
+- Zhou et al., *Spikformer: When Spiking Neural Network Meets Transformer*, ICLR 2023.
 
-- Karpathy, [nanoGPT](https://github.com/karpathy/nanoGPT) — the baseline
-  architecture and hyperparameters this follows, and the source of the dataset.
+- Karpathy, [nanoGPT](https://github.com/karpathy/nanoGPT) — the baseline architecture and hyperparameters this follows, and the source of the dataset.
 
 - Vaswani et al., *Attention Is All You Need*, NeurIPS 2017.
 
