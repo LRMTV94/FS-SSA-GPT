@@ -851,15 +851,16 @@ for (name, *_), c in zip(CONFIGS, cols):
     its = [h["iter"] for h in runs[0]["history"]]
     val = [sum(r["history"][i]["val"] for r in runs) / len(runs) for i in range(len(its))]
     trn = [sum(r["history"][i]["train"] for r in runs) / len(runs) for i in range(len(its))]
+    
     ax[0].plot(its, val, color=c, label=name)
     ax[0].plot(its, trn, color=c, ls=":", alpha=0.5)
     b = min(range(len(val)), key=lambda i: val[i])
     ax[0].scatter([its[b]], [val[b]], color=c, s=40, zorder=3)
+    
     sa, _ = agg(name, "spk_attn")
     if not math.isnan(sa):
         bl, bs = agg(name, "best_val")
-        ax[1].errorbar([sa], [bl], yerr=[bs], fmt='o', capsize=4, color=c,
-                       markersize=9, label=name)
+        ax[1].errorbar([sa], [bl], yerr=[bs], fmt='o', capsize=4, color=c, markersize=9, label=name)
 
 ax[0].set_xlabel("iteration"); ax[0].set_ylabel("loss")
 ax[0].set_title("solid = validation, dotted = train, dot = best")
