@@ -45,13 +45,13 @@ In every classifier ablation the signed ON/OFF pair was measurable only at K=1 a
 
 > With non-negative Q and K every causal logit is ≥ 0, so a token can be weighted less but never **suppressed**. The sign is what restores suppression.
 
-**The prediction is not supported.** Adding the sign makes validation loss *worse* by +0.048 nats [+0.027, +0.069] against the plain neuron, at 1.6× the spikes, and the penalty is present at every point of the training curve rather than only at the end. Whatever suppression the sign restores, it does not pay for itself at this size. It is recorded here because it was stated in advance.
+**The prediction is not supported (with the current budget).** Adding the sign makes validation loss *worse* by +0.048 nats [+0.027, +0.069] against the plain neuron, at 1.6× the spikes, and the penalty is present at every point of the training curve rather than only at the end. Whatever suppression the sign restores, it does not pay for itself at this size. It is recorded here because it was stated in advance.
 
 However, two critical observations nuance this initial finding:
 
 1. **Ongoing Convergence:** Unlike the FP32 control (which overfitted and turned upward around step 8250), all spiking variants, including the signed ones, were still steadily descending at step 10 000, meaning this gap is evaluated before convergence.
 
-2. **The Rescue by Learnable Ladders (`± L`):** When the signed neuron is paired with learnable channel thresholds (`K=2 ± L`), the network dynamically prunes noise: it recovers −0.019 nats, **slashes attention spikes by 20%** (0.846 → 0.680 spikes/token), and produces the highest qualitative fidelity in generating distinct character dialogue tags (as detailed in the results below).
+2. **The Rescue by Learnable Ladders (`± L`):** When the signed neuron is paired with learnable channel thresholds (`K=2 ± L`), the network dynamically prunes noise: it recovers −0.019 nats, **lower attention spikes by 20%** (0.846 → 0.680 spikes/token), and produces the highest qualitative fidelity in generating distinct character dialogue tags (as detailed in the results below).
 
 ---
 
@@ -273,7 +273,6 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 2. **Scaling to 50–200M parameters:**
    Moving from the 25–30M architectures to 100-200M parameters architectures, and evaluating actual 25M acrchietecture on the benckmark **WikiText-2**.
    
-
 3. **Causal memory decay ($\gamma$):**
    Incorporating a learnable or fixed decay factor ($\gamma $) into the causal state accumulation ($S_t = \gamma S_{t-1} + K_t^T V_t$) to introduce recency bias and prevent state saturation over very long sequence contexts ($T \ge 4096$).
 
