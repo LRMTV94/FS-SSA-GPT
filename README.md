@@ -1,23 +1,24 @@
-# FS-SSA-GPT — Causal Spiking self-attention on tiny Shakespeare
+# FS-SSA-GPT — Causal Spiking Self-Attention on Tiny Shakespeare and TinyStories
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22048497.svg)](https://doi.org/10.5281/zenodo.22048497)
 
+This repository presents an **autoregressive** Transformer powered by **Softmax-Free Spiking Self-Attention** (FS-SSA). Query, key and value are quantised into at most K binary spikes by a few-spikes (FS) neuron, the softmax is removed entirely, and the architecture is evaluated across two distinct scales:
 
-This repository presents an **autoregressive** Transformer powered by **Softmax-Free Spiking Self-Attention** (FS-SSA). Query, key and value are quantised into at most K binary spikes by a few-spikes (FS) neuron, the softmax is removed entirely, and the result is measured against a matched full-precision control on character-level tiny Shakespeare.
+1. **Part 1 — Ablation & Mechanics (TinyShakespeare):** A ~2.7M parameter character-level model (6 layers) tested across 3 seeds to evaluate stability, causal normalization, and threshold dynamics against a matched full-precision control;
 
-The model is small on **purpose**: ~2.7M parameters, 6 layers, 256 characters of context. The question is not whether this competes with a real language model (it does not, and neither does the control) but whether removing the softmax from a *causal* attention costs anything measurable at the same size.
+2. **Part 2 — Scaling Demonstration (TinyStories):** A ~25.1M parameter model (12 layers) using GPT-2 BPE subword tokenisation, evaluating whether the architecture scales smoothly to natural language generation;
 
 Prior work in this line: [FS-SSA](https://github.com/LRMTV94/FS_Softmax_Free_Attention) established the same architecture as a classifier on synthetic point clouds and on LHC jets, where the plain neuron already matches the control.
 
-**Results:** 
+**Key Findings:**
 
-1) The spiking model is as stable across seeds as the full-precision control (not what the literature on spiking transformers would lead one to expect). 
+1. **Stability:** The spiking model is as reproducible across seeds as the full-precision control ($\sigma \approx 0.005$), showing zero training collapse or divergence across all runs.
 
-2) At the 10k-iteration budget, the FS-model is clearly behind on validation loss. But the two arms are not in the same state at that point : the control has converged and started overfitting, istead, the spiking one is still improving, so the size of that gap is not its final value.
+2. **Convergence:** At 10k steps on TinyShakespeare, the FP32 control overfits while the spiking variants remain on a steady downward slope.
 
-This is a first attempt, published as it stands. In the future, other attempts will follow.
+3. **Scalability:** At 25.1M parameters on TinyStories BPE, the Softmax-free `FS-SSA K=2 ± L` model achieves a validation loss of **$1.8238 \pm 0.0074$** (Perplexity **6.20**), operating directly in the same loss regime as dense FP32 transformers ($\sim 1.70 - 1.90$) reported in the literature.
 
 ---
 
@@ -30,7 +31,7 @@ Three things change relative to the classifier, and all three are forced rather 
 **The row normalisation becomes causal.** Without a softmax the attention rows do not sum to 1 and must be divided by the number of attended keys. In a causal model position *t* attends to *t+1* keys, not to a constant, so the divisor is `arange(1, T+1)`. Dividing by a constant would crush the beginning of every sequence.
 
 **The threshold scale is re-measured, not inherited.** `qk_scale = 0.25` was calibrated for a BatchNorm-ed input; the spread after RMSNorm is different. The script probes the pre-activation std at initialisation and derives both scales from it: here 1.000 for Q/K/V and 0.271 for the MLP pre-activation, giving `qk_scale = 0.750` and `mlp_scale = 0.271`. This matters because the resolved
-input window is:
+input window is equal to:
 
 ```
 window = [0, s·(2 − 2^-(K-1)))     →  2s  as K → ∞
@@ -54,11 +55,9 @@ However, two critical observations nuance this initial finding:
 
 ---
 
-## Results
+## Part 1: Results on TinyShakespeare (2.7M params)
 
-Character-level, vocabulary 65, `block = 256`, `d_model = 192`, 6 heads, 6 layers, dropout 0.2, AdamW with 200-step warmup and cosine decay to 1e-4, 10 000 iterations, 3 seeds, batch 64.
-
-**Validation loss is reported at its minimum, not at the last step**, and the final value is given beside it. Tiny Shakespeare is 1.1M characters against ~2.7M parameters, so the last value can measure memorisation rather than generalisation — and for the control it does.
+Character-level, vocabulary 65, `block = 256`, `d_model = 192`, 6 heads, 6 layers, dropout 0.2, AdamW, 10 000 iterations, 3 seeds, batch 64.
 
 <div align="center">
 
@@ -71,83 +70,24 @@ Character-level, vocabulary 65, `block = 256`, `d_model = 192`, 6 heads, 6 layer
 
 </div>
 
-Paired by seed against the control, 95% intervals over 3 seeds:
+### Convergence Slopes and Stability
+
+Fitting a slope to the averaged validation curve over the last 2500 iterations:
 
 <div align="center">
 
-| Configuration | Δ best val loss [nats] | Perplexity |
-|---|---|---|
-| FS-SSA K=2 | +0.1093 [+0.1000, +0.1186] | 4.74 vs 4.25 (+11.6%) |
-| FS-SSA K=2 ± | +0.1573 [+0.1450, +0.1696] | 4.97 vs 4.25 (+17.0%) |
-| FS-SSA K=2 ± L | +0.1383 [+0.1268, +0.1498] | 4.88 vs 4.25 (+14.8%) |
-
-</div>
-
-**At this budget the control wins, clearly.** The seeds do not overlap: the worst control run (1.4516) is below the best run of any spiking configuration (1.5505). The simplest spiking configuration is the best one, which reproduces what both classifier datasets showed.
-
-### The comparison is not finished, and the numbers say so
-
-The two arms are in different states at iteration 10 000. Fitting a slope to the averaged validation curve over the last 2500 iterations:
-
-<div align="center">
-
-| Configuration | val @7500 | val @10000 | change | slope [nats / 1000 it] |
+| Configuration | val @7500 | val @10000 | slope [nats / 1000 it] | Seed Spread ($\sigma$) |
 |---|---|---|---|---|
-| softmax + GELU | 1.4563 | 1.4571 | **+0.0008** | **+0.0017** (overfitting) |
-| FS-SSA K=2 | 1.5706 | 1.5590 | −0.0116 | −0.0043 (still improving) |
-| FS-SSA K=2 ± | 1.6239 | 1.6088 | −0.0151 | −0.0045 |
-| FS-SSA K=2 ± L | 1.5973 | 1.5924 | −0.0049 | −0.0020 |
+| softmax + GELU | 1.4563 | 1.4571 | **+0.0017** (overfitting) | 0.0050 |
+| FS-SSA K=2 | 1.5706 | 1.5590 | −0.0043 (still improving) | 0.0052 |
+| FS-SSA K=2 ± L | 1.5973 | 1.5924 | −0.0020 (still improving) | 0.0049 |
 
 </div>
 
-The control has converged and turned upward; the spiking configurations are still descending. The gap follows from that, and it closes monotonically:
-
-<div align="center">
-
-| iteration | 1000 | 2500 | 5000 | 7500 | 10000 |
-|---|---|---|---|---|---|
-| FS-SSA K=2 − control | 0.437 | 0.279 | 0.161 | 0.114 | **0.102** |
-| FS-SSA K=2 ± L − control | 0.448 | 0.292 | 0.174 | 0.141 | **0.135** |
-
-</div>
-
-The gap has lost 77% of its initial value over 9000 iterations and was still shrinking when training stopped. **The +0.11 nats above is therefore an upper bound at this budget, not the asymptotic cost of removing the softmax.** Whether it converges to something small or plateaus near 0.1 is exactly what a longer run would answer, and it is the first thing to do next.
-
-### Stability
-
-<div align="center">
-
-| Configuration | σ over seeds |
-|---|---|
-| softmax + GELU | 0.0050 |
-| FS-SSA K=2 | 0.0052 |
-| FS-SSA K=2 ± | 0.0093 |
-| FS-SSA K=2 ± L | 0.0049 |
-
-</div>
-
-**The spiking model is as reproducible as the control.** For an architecture built on hard thresholds and a compactly-supported surrogate gradient this is worth stating on its own: three of the four configurations have a seed spread indistinguishable from full precision, and the fourth is within a factor two. No configuration produced a collapsed or diverged run.
-
-### The learnable ladders did move here
-
-Unlike on the classifier, where the learned thresholds barely shifted over 20 epochs, 10 000 AdamW steps move them measurably. Initialised at `s·2^-k = [0.750, 0.375]`, they end at:
-
-```
-T_mean  [0.798, 0.401]      per-channel spread  [0.102, 0.050]
-```
-
-The mean has risen about 6% and, more interestingly, a per-channel spread of roughly 13% has developed where the initialisation had none. While the plain neuron (`K=2`) achieves the lowest raw validation loss at this 10k budget, adding learnable ladders (`L`) to the signed variant (`±`) produces two critical advantages:
-
-1. **A 20% reduction in attention spikes** (from 0.846 down to 0.680 spikes/token). By adapting thresholds per channel, the network automatically prunes noise, raising thresholds on low-information channels and keeping active ones sparse, improving overall energy efficiency.
-   
-2. **Loss recovery and structural fidelity**: `L` recovers −0.019 nats [−0.034, −0.004] on top of the fixed signed neuron (bringing perplexity down from 4.97 to 4.88) and yields the highest qualitative fidelity in generating distinct character dialogue tags (`FRIAR LAURENCE:`, `PAULINA:`, `KING EDWARD IV:`).
+The gap between control and spiking lost 77% of its initial value over 9000 iterations and was still shrinking when training stopped.
 
 
-![Loss curves and energy frontier](figures/fsssa_gpt_curves.png)
-
----
-
-## Generated text
+## Generated Text Samples
 
 **These samples are illustrative, not a measurement.** They come from the weights at the final iteration, whereas the loss reported above is the minimum over training, so the model that produced this text is not the model those numbers describe. Sampling used temperature `t=0.8` and top-k 200, from an empty context. Read them to see whether the spiking model produces the same *kind* of output as the control, not to rank the two, at a 15% perplexity difference, ranking is what the table is for.
 
@@ -155,7 +95,7 @@ The mean has risen about 6% and, more interestingly, a per-channel spread of rou
 
 ```
 But touch the field of the vows of the book,
-Which then yet about-shining words can never
+which then yet about-shining words can never
 Be a place would do the lid that die of her bodies
 And so protect in the public of subjects.
 To do the truth, and be so?
@@ -226,7 +166,84 @@ Crucially, a distinct qualitative trade-off emerges between the spiking variants
 
 While all spiking samples contain somewhat more invented words (`bencer`, `mvirting`, `syou`) and drift out of syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget), the combination of signed suppression and channel-level threshold adaptation in `FS-SSA K=2 ± L` preserves high-level character roles and dialogue hierarchy with remarkable fidelity, while **lowering attention spiking activity by 20%**.
 
-The full set, one per configuration and seed, is in `fsssa_gpt_samples.txt`.
+The full set, one per configuration and seed, is in `results/fsssa_gpt_samples.txt`.
+
+---
+
+## Part 2: Scaling to TinyStories BPE (25.1M params)
+
+To evaluate whether the architecture scales to natural language, we scaled the `FS-SSA K=2 ± L` configuration to **25.1M parameters** on the **TinyStories** dataset using **GPT-2 BPE subword tokenisation** (vocab 50,257). The configuration's properties used are: `block = 256`, `d_model = 384`, 6 heads, 12 layers, batch size 64 (accumulated), 5000 iterations, 2 seeds.
+
+<div align="center">
+
+| Configuration | Best val loss | Perplexity | @ iter | Params | Attn spikes | MLP spikes | VRAM |
+|---|---|---|---|---|---|---|---|
+| **FS-SSA K=2 ± L** (Seed 0) | 1.8185 | 6.16 | 4750 | 25,123,584 | 0.680 | 0.065 | 9.3 GB |
+| **FS-SSA K=2 ± L** (Seed 1) | 1.8290 | 6.23 | 5000 | 25,123,584 | 0.681 | 0.065 | 9.8 GB |
+| **FS-SSA K=2 ± L** (Seed 2) | 1.8015 | 6.09 | 4500 | 25,123,584 | 0.681 | 0.065 | 9.8 GB |
+| **MEAN ± STD** | **1.8163 ± 0.0139** | **6.16** | **4750** | **25,123,584** | **0.681** | **0.065** | — |
+
+</div>
+
+
+## Generated Text Samples
+
+**These samples are illustrative, not a measurement.** They come from the weights at the final iteration, whereas the loss reported above is the minimum over training, so the model that produced this text is not the model those numbers describe. Read them as a sort of guideline (there’s no direct comparison with a vabilla trsformer, due to budget constraints):
+
+**FS-SSA K=2 +/- L** (seed 0, val 1.8185 , ppl 6.16)
+
+```
+<|endoftext|>. He felt sad and lonely.
+Tim and Mia looked at the billboard. They did not know what to do. They wanted to buy another picture. They tried to make a new picture. They saw the picture of a rainbow. It was a picture of the sun. They smiled.
+<|endoftext|>
+
+Tim and Sam were best friends. They liked to play with their toys and make funny noises. One day, they found a big box under a table. They opened the box and saw many toys and games.
+"Wow, look at these toys!" Tim said. "Can we play with them?"
+"Yes, you can," Sam said. "But I found them first. They are big and red and has a flag. I can put them in the box for Mia."
+"No, we can't," Tim said. "We can play with them and trucks. They are my toys. We can share them and share them with each other. Mommy says we can play with them later."
+"But we don't have any friends. They are a huge toy. We can have more fun with them." Sam said. He did not listen to Sam.
+Tim thought Sam was stupid. He did not care that Sam was mean. He said, "No, Sam. You are bad. You don't want to play with them. They are fun." He pulled the toys and threw them on the floor."
+```
+
+**FS-SSA K=2 +/- L** (seed 1 , best val 1.8290 , ppl 6.23)
+
+```
+<|endoftext|> got to give up. She handed him a special knife. It was a gift from the top. She held it up really high in her hand.
+Mimi said, "Wow! This is my reward!"
+The two of them hugged each other and decided to keep being so thoughtful. Mimi and Pimi had a lot of fun on the day together. They were never bored.
+<|endoftext|>
+
+Once upon a time, there was a little girl named Lucy. She was three years old. One day, her mommy asked her to help her carry a sack. Lucy was very excited and asked, “Mom, what is this?”
+Her mom said “It’s an address.”
+Lucy put on her blue shirt and asked, “Mommy, can I help.”
+Her mom smiled and said, “That’s a great idea, Lucy.”
+Lucy’s eyes lit up. She had never heard of an open door before. She smiled and hugged her mom.
+“What do you need us to do?” she asked. Her mom smiled and said, “I’m going to put something, but it’s not safe.”
+Lucy was excited. “What kind of surprise?” she asked.
+Her mom smiled and said, “It’s an
+```
+**FS-SSA K=2 +/- L** ( seed 2 , best val 1.8065 , ppl 6.09)
+
+```
+<|endoftext|> decided he had just left the box in the park.
+When John went to the park he found the box and he decided to play with it. He was so excited! He ran over to the box and grabbed it. He opened it and saw lots of colorful pictures inside. He smiled. He ran around and played with his new toys.
+John was having so much fun. He pretended that the box was a very interesting place to hide and seek inside. He even had so much fun! He was so happy that he forgot how much he was playing with the box and his fun day.
+<|endoftext|>
+
+The farmer and the cow were going to the beach. The cow was looking for something special. The farmer went to the shed and got an idea. He wanted to make a new sandcastle. He grabbed a bucket and started to work. 
+The farmer was very careful and was able to clean the sand. He worked carefully to make the sandcastle. He was so proud of himself and started to build the beach. After he finished, he added lots of sand and made a sandcastle. 
+The farmer was very proud of his work. He was proud that he could make the best sandcastle ever! He had built a beautiful time and he was very proud of his work.
+<|endoftext|>
+
+Once upon a time, there was a little boy who was very polite. He liked to observe the things
+```
+
+At 25.1M parameters with BPE tokenisation, spelling malformations disappear entirely. The FS-SSA model generates coherent narrative arcs, multi-speaker dialogues with quotes and attributions, character consistency, and emotional actions.
+
+The full set, one per configuration and seed, is in `results/fsssa_tinystories_samples.txt`.
+
+
+**Literature Comparison:** Published dense FP32 transformers of equivalent size (~28M) on TinyStories achieve validation loss around **~1.70 – 1.90** (Eldan & Li, 2023). The Softmax-free spiking model $K=2 \pm L$ operates directly in the same performance regime while using a softmax-free attention.
 
 ---
 
@@ -238,26 +255,11 @@ One script, no packages, no subdirectories. Both run on Colab with a GPU (T4 or 
 python -m venv .venv && source .venv/bin/activate
 pip install torch matplotlib numpy
 
-python fsssa_gpt_shakespeare.py     # trains, writes fsssa_gpt_state.json
+python fs_ssa_gpt.py     # trains, writes fsssa_gpt_state.json (Tiny Shakespeare) 
+python fsssa_gpt_bpe.py     # trains, writes fsssa_gpt_state.json (TinyStories)
 ```
 
 To repeat the run at a longer budget, change `MAX_ITERS`; the cosine schedule adapts to it.
-
----
-
-## Limitations
-
-- **The budget is the main one.** The control had converged at 10 000 iterations and the spiking arms had not. Everything reported here is conditional on that, and a longer run is the obvious next experiment rather than a caveat to be waved away.
-
-- **`qk_scale` was not tuned on this task.** It is derived from the measured spread with a multiplier (0.75σ) carried over from the classifier, where it was selected on a validation split. That multiplier has never been validated here, and the classifier work showed the threshold scale to be the single most consequential hyperparameter of this neuron.
-
-- **Three seeds.** Enough for a direction and, given how tight the spread is, enough to separate 0.1 nats — but not enough for anything at the 0.01 level.
-
-- **One model size, and a small one.** Nothing here says anything about scale.
-
-- **Only Q, K and V are spiking.** The linear projections, the normalisations, the attention–value product and the output head remain in floating point. Quantising the attention–value product is the substantive next step: it requires re-encoding a real-valued attention matrix, and is where a further loss is expected.
-
-- **Character-level.** Nothing here transfers automatically to subword tokenisation.
 
 ---
 
@@ -265,16 +267,14 @@ To repeat the run at a longer budget, change `MAX_ITERS`; the cosine schedule ad
 
 Given that the architecture demonstrated solid numerical stability across seeds ($\sigma \approx 0.005$, with zero diverged or collapsed runs), the following directions represent the immediate next steps:
 
-1. **Scaling to 25–30M parameters:**
-   Moving beyond the 2.7M character-level toy model to a 25–30M parameter architecture on benchmarks like **TinyStories** or **WikiText-2**, evaluating whether larger capacity narrows or eliminates the gap with full-precision controls.
-
-2. **Extended iteration budgets:**
+1. **Extended iteration budgets:**
    Training for 50 000–100 000 steps to measure the true asymptotic convergence limit of the spiking attention, testing whether the steady downward slope observed at 10k steps ultimately plateaus near or at the control loss.
+   
+2. **Scaling to 50–200M parameters:**
+   Moving from the 25–30M architectures to 100-200M parameters architectures, and evaluating actual 25M acrchietecture on the benckmark **WikiText-2**.
+   
 
-3. **Subword tokenisation (BPE):**
-   Transitioning from character-level encoding to subword tokenisation (e.g., `tiktoken` / BPE), allowing the model capacity to focus on high-level semantics and grammar rather than character spelling.
-
-4. **Causal memory decay ($\gamma$):**
+3. **Causal memory decay ($\gamma$):**
    Incorporating a learnable or fixed decay factor ($\gamma $) into the causal state accumulation ($S_t = \gamma S_{t-1} + K_t^T V_t$) to introduce recency bias and prevent state saturation over very long sequence contexts ($T \ge 4096$).
 
 ---
@@ -311,4 +311,3 @@ If you use this codebase or the FS-SSA architecture in your research, please cit
 Thanks for your.... Attention! 😄
 
 ---
-

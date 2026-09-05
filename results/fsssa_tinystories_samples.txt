@@ -1,0 +1,50 @@
+======================================================================
+ssa K=2 +/- L | seed 0 | best val 1.8185 (ppl 6.16) @ iter 4750
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+<|endoftext|>. He felt sad and lonely.
+Tim and Mia looked at the billboard. They did not know what to do. They wanted to buy another picture. They tried to make a new picture. They saw the picture of a rainbow. It was a picture of the sun. They smiled.
+<|endoftext|>
+
+Tim and Sam were best friends. They liked to play with their toys and make funny noises. One day, they found a big box under a table. They opened the box and saw many toys and games.
+"Wow, look at these toys!" Tim said. "Can we play with them?"
+"Yes, you can," Sam said. "But I found them first. They are big and red and has a flag. I can put them in the box for Mia."
+"No, we can't," Tim said. "We can play with them and trucks. They are my toys. We can share them and share them with each other. Mommy says we can play with them later."
+"But we don't have any friends. They are a huge toy. We can have more fun with them." Sam said. He did not listen to Sam.
+Tim thought Sam was stupid. He did not care that Sam was mean. He said, "No, Sam. You are bad. You don't want to play with them. They are fun." He pulled the toys and threw them on the floor.
+"
+
+======================================================================
+ssa K=2 +/- L | seed 1 | best val 1.8290 (ppl 6.23) @ iter 5000
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+<|endoftext|> got to give up. She handed him a special knife. It was a gift from the top. She held it up really high in her hand.
+Mimi said, "Wow! This is my reward!"
+The two of them hugged each other and decided to keep being so thoughtful. Mimi and Pimi had a lot of fun on the day together. They were never bored.
+<|endoftext|>
+
+Once upon a time, there was a little girl named Lucy. She was three years old. One day, her mommy asked her to help her carry a sack. Lucy was very excited and asked, “Mom, what is this?”
+Her mom said “It’s an address.”
+Lucy put on her blue shirt and asked, “Mommy, can I help.”
+Her mom smiled and said, “That’s a great idea, Lucy.”
+Lucy’s eyes lit up. She had never heard of an open door before. She smiled and hugged her mom.
+“What do you need us to do?” she asked. Her mom smiled and said, “I’m going to put something, but it’s not safe.”
+Lucy was excited. “What kind of surprise?” she asked.
+Her mom smiled and said, “It’s an
+
+======================================================================
+ssa K=2 +/- L | seed 2 | best val 1.8065 (ppl 6.09) @ iter 4500
+NOTE: sampled from the FINAL weights, not from the best checkpoint.
+======================================================================
+<|endoftext|> decided he had just left the box in the park.
+When John went to the park he found the box and he decided to play with it. He was so excited! He ran over to the box and grabbed it. He opened it and saw lots of colorful pictures inside. He smiled. He ran around and played with his new toys.
+John was having so much fun. He pretended that the box was a very interesting place to hide and seek inside. He even had so much fun! He was so happy that he forgot how much he was playing with the box and his fun day.
+<|endoftext|>
+
+The farmer and the cow were going to the beach. The cow was looking for something special. The farmer went to the shed and got an idea. He wanted to make a new sandcastle. He grabbed a bucket and started to work. 
+The farmer was very careful and was able to clean the sand. He worked carefully to make the sandcastle. He was so proud of himself and started to build the beach. After he finished, he added lots of sand and made a sandcastle. 
+The farmer was very proud of his work. He was proud that he could make the best sandcastle ever! He had built a beautiful time and he was very proud of his work.
+<|endoftext|>
+
+Once upon a time, there was a little boy who was very polite. He liked to observe the things
+

@@ -1,0 +1,490 @@
+{
+ "fingerprint": {
+  "data": "tinystories",
+  "vocab": 50257,
+  "block": 256,
+  "d_model": 384,
+  "n_layer": 12,
+  "n_heads": 6,
+  "iters": 5000,
+  "eff_batch": 64,
+  "lr": 0.001,
+  "width": 1.0,
+  "qk_sigma_mult": 0.75,
+  "mlp_sigma_mult": 1.0,
+  "readout_scale": 1.0
+ },
+ "measured": {
+  "sigma_qk": 0.9999835044145584,
+  "sigma_mlp": 0.40165116637945175,
+  "qk_scale": 0.7499876283109188,
+  "mlp_scale": 0.40165116637945175
+ },
+ "runs": [
+  {
+   "name": "ssa K=2 +/- L",
+   "seed": 0,
+   "params": 40944384,
+   "peak_gb": 9.337811946868896,
+   "best_val": 1.8185192346572876,
+   "best_iter": 4750,
+   "best_train": 1.8032886981964111,
+   "final_val": 1.8414766788482666,
+   "ppl": 6.162726138864342,
+   "final_ppl": 6.30584309432845,
+   "spk_attn": 0.6804482671949599,
+   "spk_mlp": 0.06506396465831332,
+   "minutes": 232.62222207784652,
+   "history": [
+    {
+     "iter": 0,
+     "train": 10.87483024597168,
+     "val": 10.87462329864502
+    },
+    {
+     "iter": 250,
+     "train": 3.467289686203003,
+     "val": 3.4802002906799316
+    },
+    {
+     "iter": 500,
+     "train": 2.9221956729888916,
+     "val": 2.9190421104431152
+    },
+    {
+     "iter": 750,
+     "train": 2.6625890731811523,
+     "val": 2.6529738903045654
+    },
+    {
+     "iter": 1000,
+     "train": 2.5039124488830566,
+     "val": 2.444713592529297
+    },
+    {
+     "iter": 1250,
+     "train": 2.327758312225342,
+     "val": 2.3509888648986816
+    },
+    {
+     "iter": 1500,
+     "train": 2.2607343196868896,
+     "val": 2.2523369789123535
+    },
+    {
+     "iter": 1750,
+     "train": 2.1766698360443115,
+     "val": 2.1937832832336426
+    },
+    {
+     "iter": 2000,
+     "train": 2.12410044670105,
+     "val": 2.144988775253296
+    },
+    {
+     "iter": 2250,
+     "train": 2.0745816230773926,
+     "val": 2.0752053260803223
+    },
+    {
+     "iter": 2500,
+     "train": 2.0360114574432373,
+     "val": 2.0427298545837402
+    },
+    {
+     "iter": 2750,
+     "train": 1.9943548440933228,
+     "val": 1.9945030212402344
+    },
+    {
+     "iter": 3000,
+     "train": 1.9671672582626343,
+     "val": 1.9567171335220337
+    },
+    {
+     "iter": 3250,
+     "train": 1.9399816989898682,
+     "val": 1.9403327703475952
+    },
+    {
+     "iter": 3500,
+     "train": 1.9310859441757202,
+     "val": 1.9037147760391235
+    },
+    {
+     "iter": 3750,
+     "train": 1.8598159551620483,
+     "val": 1.8803465366363525
+    },
+    {
+     "iter": 4000,
+     "train": 1.867330551147461,
+     "val": 1.8639039993286133
+    },
+    {
+     "iter": 4250,
+     "train": 1.8457939624786377,
+     "val": 1.8694928884506226
+    },
+    {
+     "iter": 4500,
+     "train": 1.8220398426055908,
+     "val": 1.8630329370498657
+    },
+    {
+     "iter": 4750,
+     "train": 1.8032886981964111,
+     "val": 1.8185192346572876
+    },
+    {
+     "iter": 5000,
+     "train": 1.7949016094207764,
+     "val": 1.8414766788482666
+    }
+   ],
+   "ladders": [
+    {
+     "T_mean": [
+      0.8415862321853638,
+      0.4206385612487793
+     ],
+     "T_std": [
+      0.06101454421877861,
+      0.03064185380935669
+     ]
+    },
+    {
+     "T_mean": [
+      0.8422960042953491,
+      0.42074769735336304
+     ],
+     "T_std": [
+      0.062236182391643524,
+      0.031082168221473694
+     ]
+    },
+    {
+     "T_mean": [
+      0.8509540557861328,
+      0.42591428756713867
+     ],
+     "T_std": [
+      0.028486331924796104,
+      0.01349643338471651
+     ]
+    }
+   ],
+   "sample": "<|endoftext|>. He felt sad and lonely.\nTim and Mia looked at the billboard. They did not know what to do. They wanted to buy another picture. They tried to make a new picture. They saw the picture of a rainbow. It was a picture of the sun. They smiled.\n<|endoftext|>\n\nTim and Sam were best friends. They liked to play with their toys and make funny noises. One day, they found a big box under a table. They opened the box and saw many toys and games.\n\"Wow, look at these toys!\" Tim said. \"Can we play with them?\"\n\"Yes, you can,\" Sam said. \"But I found them first. They are big and red and has a flag. I can put them in the box for Mia.\"\n\"No, we can't,\" Tim said. \"We can play with them and trucks. They are my toys. We can share them and share them with each other. Mommy says we can play with them later.\"\n\"But we don't have any friends. They are a huge toy. We can have more fun with them.\" Sam said. He did not listen to Sam.\nTim thought Sam was stupid. He did not care that Sam was mean. He said, \"No, Sam. You are bad. You don't want to play with them. They are fun.\" He pulled the toys and threw them on the floor.\n\""
+  },
+  {
+   "name": "ssa K=2 +/- L",
+   "seed": 1,
+   "params": 40944384,
+   "peak_gb": 9.802810668945312,
+   "best_val": 1.8289976119995117,
+   "best_iter": 5000,
+   "best_train": 1.828322172164917,
+   "final_val": 1.8289976119995117,
+   "ppl": 6.227641016143257,
+   "final_ppl": 6.227641016143257,
+   "spk_attn": 0.6810207693665116,
+   "spk_mlp": 0.06569738454288906,
+   "minutes": 232.53266342480978,
+   "history": [
+    {
+     "iter": 0,
+     "train": 10.905452728271484,
+     "val": 10.905102729797363
+    },
+    {
+     "iter": 250,
+     "train": 3.432807207107544,
+     "val": 3.4822471141815186
+    },
+    {
+     "iter": 500,
+     "train": 2.9304144382476807,
+     "val": 2.9384970664978027
+    },
+    {
+     "iter": 750,
+     "train": 2.6495041847229004,
+     "val": 2.6640236377716064
+    },
+    {
+     "iter": 1000,
+     "train": 2.475813627243042,
+     "val": 2.4518485069274902
+    },
+    {
+     "iter": 1250,
+     "train": 2.367326021194458,
+     "val": 2.3860487937927246
+    },
+    {
+     "iter": 1500,
+     "train": 2.2867519855499268,
+     "val": 2.2645063400268555
+    },
+    {
+     "iter": 1750,
+     "train": 2.2293851375579834,
+     "val": 2.243283987045288
+    },
+    {
+     "iter": 2000,
+     "train": 2.1216259002685547,
+     "val": 2.141057252883911
+    },
+    {
+     "iter": 2250,
+     "train": 2.0915749073028564,
+     "val": 2.091104030609131
+    },
+    {
+     "iter": 2500,
+     "train": 2.024824619293213,
+     "val": 2.06502103805542
+    },
+    {
+     "iter": 2750,
+     "train": 2.010399341583252,
+     "val": 1.9759021997451782
+    },
+    {
+     "iter": 3000,
+     "train": 1.9809238910675049,
+     "val": 1.9891154766082764
+    },
+    {
+     "iter": 3250,
+     "train": 1.9447981119155884,
+     "val": 1.9081159830093384
+    },
+    {
+     "iter": 3500,
+     "train": 1.922239899635315,
+     "val": 1.9083133935928345
+    },
+    {
+     "iter": 3750,
+     "train": 1.8671653270721436,
+     "val": 1.9439014196395874
+    },
+    {
+     "iter": 4000,
+     "train": 1.8651256561279297,
+     "val": 1.887258529663086
+    },
+    {
+     "iter": 4250,
+     "train": 1.8510570526123047,
+     "val": 1.8627796173095703
+    },
+    {
+     "iter": 4500,
+     "train": 1.8486934900283813,
+     "val": 1.838985800743103
+    },
+    {
+     "iter": 4750,
+     "train": 1.8417171239852905,
+     "val": 1.8363561630249023
+    },
+    {
+     "iter": 5000,
+     "train": 1.828322172164917,
+     "val": 1.8289976119995117
+    }
+   ],
+   "ladders": [
+    {
+     "T_mean": [
+      0.8395683765411377,
+      0.41910624504089355
+     ],
+     "T_std": [
+      0.06752510368824005,
+      0.03366975858807564
+     ]
+    },
+    {
+     "T_mean": [
+      0.8381127715110779,
+      0.41812294721603394
+     ],
+     "T_std": [
+      0.06873806565999985,
+      0.0344768650829792
+     ]
+    },
+    {
+     "T_mean": [
+      0.8475158214569092,
+      0.4238029420375824
+     ],
+     "T_std": [
+      0.03212127089500427,
+      0.01522081159055233
+     ]
+    }
+   ],
+   "sample": "<|endoftext|> got to give up. She handed him a special knife. It was a gift from the top. She held it up really high in her hand.\nMimi said, \"Wow! This is my reward!\"\nThe two of them hugged each other and decided to keep being so thoughtful. Mimi and Pimi had a lot of fun on the day together. They were never bored.\n<|endoftext|>\n\nOnce upon a time, there was a little girl named Lucy. She was three years old. One day, her mommy asked her to help her carry a sack. Lucy was very excited and asked, \u201cMom, what is this?\u201d\nHer mom said \u201cIt\u2019s an address.\u201d\nLucy put on her blue shirt and asked, \u201cMommy, can I help.\u201d\nHer mom smiled and said, \u201cThat\u2019s a great idea, Lucy.\u201d\nLucy\u2019s eyes lit up. She had never heard of an open door before. She smiled and hugged her mom.\n\u201cWhat do you need us to do?\u201d she asked. Her mom smiled and said, \u201cI\u2019m going to put something, but it\u2019s not safe.\u201d\nLucy was excited. \u201cWhat kind of surprise?\u201d she asked.\nHer mom smiled and said, \u201cIt\u2019s an"
+  },
+  {
+   "name": "ssa K=2 +/- L",
+   "seed": 2,
+   "params": 40944384,
+   "peak_gb": 9.802810668945312,
+   "best_val": 1.8065440654754639,
+   "best_iter": 4500,
+   "best_train": 1.8256199359893799,
+   "final_val": 1.8310329914093018,
+   "ppl": 6.0893665740036464,
+   "final_ppl": 6.240329537035693,
+   "spk_attn": 0.6798813307726824,
+   "spk_mlp": 0.06436909503406948,
+   "minutes": 232.4587736527125,
+   "history": [
+    {
+     "iter": 0,
+     "train": 10.926627159118652,
+     "val": 10.924833297729492
+    },
+    {
+     "iter": 250,
+     "train": 3.4696507453918457,
+     "val": 3.463352918624878
+    },
+    {
+     "iter": 500,
+     "train": 2.89201021194458,
+     "val": 2.869126081466675
+    },
+    {
+     "iter": 750,
+     "train": 2.643378496170044,
+     "val": 2.6434929370880127
+    },
+    {
+     "iter": 1000,
+     "train": 2.465266704559326,
+     "val": 2.4703943729400635
+    },
+    {
+     "iter": 1250,
+     "train": 2.3239452838897705,
+     "val": 2.338247299194336
+    },
+    {
+     "iter": 1500,
+     "train": 2.2414193153381348,
+     "val": 2.225790500640869
+    },
+    {
+     "iter": 1750,
+     "train": 2.176994800567627,
+     "val": 2.184201717376709
+    },
+    {
+     "iter": 2000,
+     "train": 2.120107889175415,
+     "val": 2.155636787414551
+    },
+    {
+     "iter": 2250,
+     "train": 2.0989303588867188,
+     "val": 2.078183650970459
+    },
+    {
+     "iter": 2500,
+     "train": 2.0168824195861816,
+     "val": 2.0135130882263184
+    },
+    {
+     "iter": 2750,
+     "train": 1.9914582967758179,
+     "val": 1.9988914728164673
+    },
+    {
+     "iter": 3000,
+     "train": 1.963979721069336,
+     "val": 1.9593862295150757
+    },
+    {
+     "iter": 3250,
+     "train": 1.925957441329956,
+     "val": 1.9131708145141602
+    },
+    {
+     "iter": 3500,
+     "train": 1.8927600383758545,
+     "val": 1.9081413745880127
+    },
+    {
+     "iter": 3750,
+     "train": 1.8607076406478882,
+     "val": 1.875912070274353
+    },
+    {
+     "iter": 4000,
+     "train": 1.862939476966858,
+     "val": 1.859220266342163
+    },
+    {
+     "iter": 4250,
+     "train": 1.8456697463989258,
+     "val": 1.8403685092926025
+    },
+    {
+     "iter": 4500,
+     "train": 1.8256199359893799,
+     "val": 1.8065440654754639
+    },
+    {
+     "iter": 4750,
+     "train": 1.8316023349761963,
+     "val": 1.8219143152236938
+    },
+    {
+     "iter": 5000,
+     "train": 1.8081566095352173,
+     "val": 1.8310329914093018
+    }
+   ],
+   "ladders": [
+    {
+     "T_mean": [
+      0.84161776304245,
+      0.4201999604701996
+     ],
+     "T_std": [
+      0.06394997984170914,
+      0.031753189861774445
+     ]
+    },
+    {
+     "T_mean": [
+      0.8437521457672119,
+      0.4213608205318451
+     ],
+     "T_std": [
+      0.05976879969239235,
+      0.029780464246869087
+     ]
+    },
+    {
+     "T_mean": [
+      0.8493577837944031,
+      0.425167441368103
+     ],
+     "T_std": [
+      0.03038598969578743,
+      0.014371886849403381
+     ]
+    }
+   ],
+   "sample": "<|endoftext|> decided he had just left the box in the park.\nWhen John went to the park he found the box and he decided to play with it. He was so excited! He ran over to the box and grabbed it. He opened it and saw lots of colorful pictures inside. He smiled. He ran around and played with his new toys.\nJohn was having so much fun. He pretended that the box was a very interesting place to hide and seek inside. He even had so much fun! He was so happy that he forgot how much he was playing with the box and his fun day.\n<|endoftext|>\n\nThe farmer and the cow were going to the beach. The cow was looking for something special. The farmer went to the shed and got an idea. He wanted to make a new sandcastle. He grabbed a bucket and started to work. \nThe farmer was very careful and was able to clean the sand. He worked carefully to make the sandcastle. He was so proud of himself and started to build the beach. After he finished, he added lots of sand and made a sandcastle. \nThe farmer was very proud of his work. He was proud that he could make the best sandcastle ever! He had built a beautiful time and he was very proud of his work.\n<|endoftext|>\n\nOnce upon a time, there was a little boy who was very polite. He liked to observe the things"
+  }
+ ]
+}
