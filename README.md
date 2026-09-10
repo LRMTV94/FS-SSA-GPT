@@ -166,8 +166,7 @@ Crucially, a distinct qualitative and energetic trade-off emerges across the spi
 
 While paying a moderate firing overhead over plain K=2 (+0.15 in absolute activity) and a marginal validation penalty (+0.03 nats), **FS-SSA K=2 ± L exhibits the highest structural and dramatic fidelity**. It consistently sustains complex, multi-speaker scenes featuring major historical and tragic personas (`KING EDWARD IV:`, `DUKE OF AUMERLE:`, `FRIAR LAURENCE:`, `PAULINA:`) in blank verse. 
 
-While all spiking configurations exhibit more non-words (`bencer`, `mvirting`, `syou`) and drift out of long-range syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget) the combination of signed suppression and learnable thresholds proves essential: it prevents representational collapse under bipolarity and preserves high-level dramatic hierarchy that purely non-negative attention fails to capture.
-
+All spiking configurations exhibit more non-words (`bencer`, `mvirting`, `syou`) and drift out of long-range syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget), but, the combination of signed suppression and learnable thresholds proves essential: it prevents representational collapse under bipolarity and preserves high-level dramatic hierarchy that purely non-negative attention fails to capture.
 
 The full set, one per configuration and seed, is in `results/fsssa_gpt_samples.txt`.
 
