@@ -291,7 +291,7 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 
 - Vaswani et al., *Attention Is All You Need*, NeurIPS 2017.
 
-- Lo Russo M.V., [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22048497.svg)](https://doi.org/10.5281/zenodo.22048497), Few-Spikes Transformer with Spiking Self-Attention
+- Lo Russo M.V., https://doi.org/10.5281/zenodo.22048497, Few-Spikes Transformer with Spiking Self-Attention
 
 ---
 
