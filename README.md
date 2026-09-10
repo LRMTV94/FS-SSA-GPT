@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22048497.svg)](https://doi.org/10.5281/zenodo.22048497)
 
 This repository presents an **autoregressive** Transformer powered by **Softmax-Free Spiking Self-Attention** (FS-SSA). Query, key and value are quantised into at most K binary spikes by a few-spikes (FS) neuron, the softmax is removed entirely, and the architecture is evaluated across two distinct scales:
 
@@ -292,20 +291,9 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 
 - Vaswani et al., *Attention Is All You Need*, NeurIPS 2017.
 
-## Citation and Acknowledgements
+- Lo Russo M.V., [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22048497.svg)](https://doi.org/10.5281/zenodo.22048497), Few-Spikes Transformer with Spiking Self-Attention
 
-If you use this codebase or the FS-SSA architecture in your research, please cite:
-
-```bibtex
-@software{FS_Softmax_Free_Attention_2026,
-  author    = {Lo Russo Matteo Vito},
-  title     = {Few-Spikes Transformer with Spiking Self-Attention},
-  year      = {2026},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.22048497},
-  url       = {https://doi.org/10.5281/zenodo.22048497}
-}
-```
+---
 
 Thanks for your.... Attention! 😄
 
