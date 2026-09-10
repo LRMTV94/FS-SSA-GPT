@@ -155,16 +155,20 @@ And should make was thy England's place three,
 Art thou of thee and these blood mvirting and steel.
 ```
 
+Both arms learn the same fundamental macro-structure: speaker names in capitals followed by a colon, line breaks at roughly iambic length, consistent dialogue alternation between speakers, and a vocabulary that is mostly valid English with plausible edge malformations. Furthermore, character names are drawn from the correct Shakespearean plays and remain internally coherent within a generated passage.
 
-Both arms learn the same structure: speaker names in capitals followed by a colon, line breaks at roughly iambic length, dialogue alternating between speakers, and a vocabulary that is mostly real English with plausible malformations at the edges. Character names are drawn from the right plays and stay internally consistent within a passage.
+Crucially, a distinct qualitative and energetic trade-off emerges across the spiking variants:
 
-Crucially, a distinct qualitative trade-off emerges between the spiking variants:
+* **FS-SSA K=2 (plain)** achieves the lowest raw validation loss and the lowest firing activity (0.530), excelling at local n-gram transitions and rapid, simple conversational exchanges (e.g., `STANLEY:`, `POMPEY:`).
 
-- **FS-SSA K=2** (plain) yields the lowest raw validation loss among spiking models, capturing simple dialogue exchanges (`STANLEY:`, `POMPEY:`).
-  
-- **FS-SSA K=2 ± L** (signed + learnable thresholds), despite a slightly higher loss (+0.03 nats over plain K=2), exhibits **the highest structural and dramatic fidelity**. It consistently generates complex, multi-speaker scenes featuring major historical and play-specific characters (`KING EDWARD IV:`, `DUKE OF AUMERLE:`, `FRIAR LAURENCE:`, `PAULINA:`).
+* **FS-SSA K=2 ± (signed suppression)** introduces bidirectional inhibition, but without threshold regulation it suffers from hyper-activation and noise, leading to the worst validation perplexity and severe lexical corruption (`daterned`, `windivence`).
 
-While all spiking samples contain somewhat more invented words (`bencer`, `mvirting`, `syou`) and drift out of syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget), the combination of signed suppression and channel-level threshold adaptation in `FS-SSA K=2 ± L` preserves high-level character roles and dialogue hierarchy with remarkable fidelity, while **lowering attention spiking activity by 20%**.
+* **FS-SSA K=2 ± L (signed + learnable thresholds)** acts as a homeostatic stabilizer: channel-adaptive thresholds curb runaway firing, **lowering attention spike activity by ~20% relative to the unconstrained K=2 ± variant** (bringing it down to 0.680). 
+
+While paying a moderate firing overhead over plain K=2 (+0.15 in absolute activity) and a marginal validation penalty (+0.03 nats), **FS-SSA K=2 ± L exhibits the highest structural and dramatic fidelity**. It consistently sustains complex, multi-speaker scenes featuring major historical and tragic personas (`KING EDWARD IV:`, `DUKE OF AUMERLE:`, `FRIAR LAURENCE:`, `PAULINA:`) in blank verse. 
+
+While all spiking configurations exhibit more non-words (`bencer`, `mvirting`, `syou`) and drift out of long-range syntax sooner than the FP32 control (reflecting the 11–15% perplexity gap at this 10k budget) the combination of signed suppression and learnable thresholds proves essential: it prevents representational collapse under bipolarity and preserves high-level dramatic hierarchy that purely non-negative attention fails to capture.
+
 
 The full set, one per configuration and seed, is in `results/fsssa_gpt_samples.txt`.
 

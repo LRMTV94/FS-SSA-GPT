@@ -746,6 +746,7 @@ def run(name, attention, activation, K, signed, learnable, seed):
 # would skip every configuration and then print the old numbers under the new
 # heading, silently. The measured threshold scales are deliberately NOT part
 # of it: they jitter in the last digits, which would block legitimate resumes.
+
 FINGERPRINT = {"data": TAG, "vocab": VOCAB, "block": BLOCK, "d_model": D_MODEL,
                "n_layer": N_LAYER, "n_heads": N_HEADS, "iters": MAX_ITERS,
                "eff_batch": MICRO_BATCH * GRAD_ACCUM, "lr": LR, "width": WIDTH,
