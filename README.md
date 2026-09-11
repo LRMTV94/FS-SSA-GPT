@@ -296,6 +296,21 @@ Given that the architecture demonstrated solid numerical stability across seeds 
 
 ---
 
+## Citation and Acknowledgements
+
+If you use this codebase or the FS-SSA architecture in your research, please cite:
+
+```bibtex
+@software{FS-SSA-GPT — Causal Spiking Self-Attention on TinyShakespeare and TinyStories,
+  author    = {Lo Russo Matteo Vito},
+  title     = {FS-SSA-GPT},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22048497},
+  url       = {https://doi.org/10.5281/zenodo.22702448}
+}
+```
+
 Thanks for your.... Attention! 😄
 
 ---
